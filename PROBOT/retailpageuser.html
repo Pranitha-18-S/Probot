@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Orders - Prabot</title>
+    <link rel="stylesheet" href="retailstyle.css">
+    <script src="retail.js" defer></script>
+    <script>
+        function addToCart(productName, price) {
+            let quantity = prompt(`Enter quantity for ${productName} (kg):`);
+            if (quantity === null) return; 
+            
+            quantity = parseInt(quantity);
+            if (isNaN(quantity) || quantity <= 0) {
+                alert("Please enter a valid quantity!");
+                return;
+            }
+
+            if (quantity < 10) {
+                alert(" Wholesale orders are only available for 10kg or more.");
+            } else {
+                let total = price * quantity;
+                alert(` Added ${quantity} kg of ${productName} to cart!\nTotal: ₹${total}`);
+            }
+            let completedRetailOrders = localStorage.getItem("retailOrders") || 0;
+            localStorage.setItem("retailOrders", ++completedRetailOrders);
+            checkBulkAccess();
+        }
+
+        function checkBulkAccess() {
+            let completedRetailOrders = localStorage.getItem("retailOrders") || 0;
+            let bulkAccessBtn = document.getElementById("bulkAccessBtn");
+
+            if (completedRetailOrders >= 3) {
+                bulkAccessBtn.disabled = false;
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", checkBulkAccess);
+    </script>
+</head>
+<body>
+
+<header class="navbar">
+    <h1>Prabot</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="user.html">Dashboard</a>
+        <a href="login.html">Logout</a>
+    </nav>
+</header>
+<section class="retail">
+    <h2>Retail Deals - Buy Fresh Produce</h2>
+    <div class="product-list">
+
+        <div class="product-card">
+            <img src="tomato.jpg" alt="Tomato">
+            <h3>Tomato</h3>
+            <p>Price: ₹30/kg</p>
+            <button onclick="addToCart('Tomato', 30)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="navigation/potato.jpeg" alt="Potato">
+            <h3>Potato</h3>
+            <p>Price: ₹25/kg</p>
+            <button onclick="addToCart('Potato', 25)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="navigation/apple.jpg" alt="Apple">
+            <h3>Apple</h3>
+            <p>Price: ₹120/kg</p>
+            <button onclick="addToCart('Apple', 120)">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+<section class="recommended">
+    <h2>Recommended for You</h2>
+    <div class="product-list">
+
+        <div class="product-card">
+            <img src="navigation/carrot.jpg" alt="Carrot">
+            <h3>Carrot</h3>
+            <p>Price: ₹40/kg</p>
+            <button onclick="addToCart('Carrot', 40)">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="navigation/onion.jpg" alt="Onion">
+            <h3>Onion</h3>
+            <p>Price: ₹35/kg</p>
+            <button onclick="addToCart('Onion', 35)">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+<section class="harvest">
+    <h2>Ready to Harvest Crops</h2>
+    <div class="farmer-list">
+
+        <div class="farmer-card">
+            <img src="images/farmer1.jpg" alt="Farmer">
+            <h3>Ravi Kumar</h3>
+            <p>Crop: Cabbage</p>
+            <p>Harvest Date: 10th March</p>
+            <p>Location: Guntur</p>
+            <button>Contact Farmer</button>
+        </div>
+
+        <div class="farmer-card">
+            <img src="images/farmer2.jpg" alt="Farmer">
+            <h3>Sunil Reddy</h3>
+            <p>Crop: Cauliflower</p>
+            <p>Harvest Date: 12th March</p>
+            <p>Location: Vijayawada</p>
+            <button>Contact Farmer</button>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>Contact Us: prabot@gmail.com</p>
+</footer>
+
+</body>
+</html>

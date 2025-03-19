@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Prabot</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .cart-container {
+            width: 80%;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        .cart-items {
+            margin-bottom: 20px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+        .cart-summary {
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+        }
+        .checkout-btn {
+            background-color: #a74747;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .checkout-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <h2>Shopping Cart</h2>
+        <div class="cart-items" id="cart-items">
+        </div>
+        <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <p>Total: ₹<span id="total-price">0.00</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div> 
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        function updateCart() {
+            let cartItemsContainer = document.getElementById("cart-items");
+            let totalPrice = 0;
+            cartItemsContainer.innerHTML = "";
+            cart.forEach(item => {
+                let itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <span>${item.name}</span>
+                        <span>₹${item.price} x ${item.quantity}</span>
+                        <button onclick="removeItem(${item.id})">Remove</button>
+                    </div>
+                `;
+            });
+            document.getElementById("total-price").innerText = totalPrice.toFixed(2);
+        }
+        function removeItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            updateCart();
+        }
+        document.addEventListener("DOMContentLoaded", updateCart);
+    </script>
+</body>
+</html>

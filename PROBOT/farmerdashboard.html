@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - Prabot</title>
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #a74747;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 15px;
+        }
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .navbar ul li a:hover {
+            text-decoration: underline;
+        }
+        main {
+            padding: 20px;
+        }
+        .order,
+        .product-management {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            line-height: 1.5;
+        }
+        button {
+            background-color: #a74747;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #8d3c3c;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Prabot</div>
+        <ul>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h2>Pending Wholesale Orders</h2>
+        <div id="orders-container">
+            <div class="order">
+                <h3>Order #12345</h3>
+                <p>Product: Tomatoes</p>
+                <p>Quantity: 50 kg</p>
+                <p>Buyer Price: ₹40/kg</p>
+
+                <div id="farmerActions">
+                    <button onclick="acceptOrder(12345)">Accept Order</button>
+                    <button onclick="rejectOrder(12345)">Reject Order</button>
+                    <button onclick="showNegotiationInput(12345)">Propose Counteroffer</button>
+                </div>
+
+                <div id="negotiationInput-12345" style="display: none;">
+                    <input type="number" id="counterPrice-12345" placeholder="Enter new price">
+                    <button onclick="sendCounterOffer(12345)">Submit Counteroffer</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-management">
+            <h2>Manage Your Products</h2>
+            <button id="addProductBtn">Add New Product</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Update</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <tr>
+                        <td>Tomatoes</td>
+                        <td>Vegetables</td>
+                        <td>50 kg</td>
+                        <td><button onclick="updateProduct(1)">Update</button></td>
+                        <td><button onclick="removeProduct(1)">Remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <div id="addProductModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h3>Add New Product</h3>
+
+            <form id="addProductForm">
+                <label>Product Name:</label>
+                <input type="text" id="productName" required>
+
+                <label>Category:</label>
+                <select id="productCategory">
+                    <option value="vegetables">Vegetables</option>
+                    <option value="fruits">Fruits</option>
+                    <option value="spices">Spices</option>
+                    <option value="dairy">Dairy</option>
+                </select>
+
+                <label>Quantity:</label>
+                <input type="number" id="productQuantity" required>
+
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function showNegotiationInput(orderId) {
+            document.getElementById("negotiationInput-" + orderId).style.display = "block";
+        }
+        function sendCounterOffer(orderId) {
+            let price = document.getElementById("counterPrice-" + orderId).value;
+            if (price) {
+                alert("Counteroffer of ₹" + price + "/kg sent for Order #" + orderId);
+            }
+        }
+        function acceptOrder(orderId) {
+            alert("Order #" + orderId + " accepted.");
+        }
+        function rejectOrder(orderId) {
+            alert("Order #" + orderId + " rejected.");
+        }
+        function closeModal() {
+            document.getElementById("addProductModal").style.display = "none";
+        }
+        function updateProduct(productId) {
+            alert("Updating Product ID: " + productId);
+        }
+        function removeProduct(productId) {
+            alert("Removing Product ID: " + productId);
+        }
+    </script>
+    <script src="farmer_dashboard.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wholesale Orders - Prabot</title>
+    <link rel="stylesheet" href="stylew.css">
+    <script src="wholesale.js" defer></script>
+    <script>
+        function contactFarmer(farmerName, crop) {
+            let quantity = document.getElementById("quantity").value;
+            if (!quantity || quantity < 10) {
+                alert("Wholesale orders must be at least 10 kg!");
+                return;
+            }
+            document.getElementById("farmer-results").style.display = "block";
+            document.getElementById("selected-crop").innerText = crop;
+        }
+    </script>
+</head>
+<body>
+    <header class="navbar">
+        <h1>Prabot</h1>
+        <nav>
+            <ul class="center-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user.html">Dashboard</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="orderForm">
+        <h2>Place a Wholesale Order</h2>
+        <label>Enter Quantity (kg):</label>
+        <input type="number" id="quantity" min="10" required>
+        <button onclick="validateOrder()">Find Farmers</button>
+    </section>
+    <section class="wholesale">
+        <h2>Wholesale Deals - Farmers Selling in Bulk</h2>
+        <div class="farmer-list">
+            <div class="farmer-card">
+                <h3>Ramesh Kumar</h3>
+                <p>Crop: Wheat</p>
+                <p>Available: 500 kg</p>
+                <p>Location: Guntur</p>
+                <p>⭐ Rating: 4.5</p>
+                <button onclick="contactFarmer('Ramesh Kumar', 'Wheat')">Contact Farmer</button>
+            </div>
+
+            <div class="farmer-card">
+                <h3>Sita Rao</h3>
+                <p>Crop: Onions</p>
+                <p>Available: 300 kg</p>
+                <p>Location: Vijayawada</p>
+                <p>⭐ Rating: 4.2</p>
+                <button onclick="contactFarmer('Sita Rao', 'Onions')">Contact Farmer</button>
+            </div>
+        </div>
+    </section>
+    <section id="farmer-results" class="results" style="display: none;">
+        <h2>Available Farmers for <span id="selected-crop"></span></h2>
+        <div class="farmer-list">
+            <div class="farmer-card">
+                <h3>Amit Sharma</h3>
+                <p>Crop: Wheat</p>
+                <p>Location: Hyderabad</p>
+                <p>⭐ Rating: 4.8</p>
+                <button>Request Order</button>
+            </div>
+
+            <div class="farmer-card">
+                <h3>Kiran Reddy</h3>
+                <p>Crop: Wheat</p>
+                <p>Location: Guntur</p>
+                <p>⭐ Rating: 4.3</p>
+                <button>Request Order</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Contact Us: prabot@gmail.com</p>
+    </footer>
+</body>
+</html>

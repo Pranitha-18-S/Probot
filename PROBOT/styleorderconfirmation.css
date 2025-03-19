@@ -1,0 +1,25 @@
+.order-confirmation {
+    background-color: #28a745;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+.confirmation-container {
+    font-size: 2rem;
+}
+.confirmation-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    background-color: white;
+    color: #28a745;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.confirmation-container button:hover {
+    background-color: #f8f9fa;
+}

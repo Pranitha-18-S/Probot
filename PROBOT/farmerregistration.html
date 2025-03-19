@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Registration - Prabot</title>
+    <link rel="stylesheet" href="farmerregistration.css">
+</head>
+<body>
+    <header id="header">
+        <h1 id="prabot">PRABOT</h1>
+        <nav>
+          <a href="#" id="about">About Us</a>
+          <a href="#" id="explore">Explore</a>
+          <a href="#" id="products">Products</a>
+        </nav>
+      </header>
+<div class="form-container">
+    <h2>Farmer Registration</h2>
+    <form id="farmerForm">
+        <input type="text" id="fullName" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="text" id="farmName" placeholder="Farm Name (Optional)">
+        <input type="text" id="location" placeholder="Location" required>
+        <select id="crops">
+            <option value="">Select Crops Cultivated</option>
+            <option value="Tomatoes">Tomatoes</option>
+            <option value="Onions">Onions</option>
+            <option value="Apples">Apples</option>
+            <option value="Turmeric">Turmeric</option>
+        </select>
+        <input type="text" id="quantity" placeholder="Quantity Available (e.g., 100 kg)" required>
+        <input type="text" id="perks" placeholder="Perks (Organic, Bulk Discounts, etc.)">
+        <input type="text" id="harvestTime" placeholder="Estimated Harvest Time (e.g., 2 months)">
+        
+        <!-- Optional Profile Photo Upload -->
+        <label>Upload Profile Photo (Optional):</label>
+        <input type="file" id="profilePhoto" accept="image/*">
+        
+        <button type="submit">Register as Farmer</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("farmerForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let fullName = document.getElementById("fullName").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let password = document.getElementById("password").value.trim();
+        let location = document.getElementById("location").value.trim();
+        let crops = document.getElementById("crops").value;
+        let quantity = document.getElementById("quantity").value.trim();
+        if (fullName === "" || email === "" || phone === "" || password === "" || location === "" || crops === "" || quantity === "") {
+            alert("Please fill in all required fields.");
+            return;
+        }
+        window.location.href = "farmerdashboard.html";
+    });
+</script>
+
+</body>
+</html>

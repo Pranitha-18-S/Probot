@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - Prabot</title>
+    <link rel="stylesheet" href="userregisration.css">
+</head>
+<body style="background-image: url('file:///C:/Users/prani/OneDrive/Documents/HTML/PROBOT/navigation/bgimageforuser2.jpg'); 
+             background-size: cover; 
+             background-repeat: no-repeat;">
+
+<header id="header">
+    <h1 id="prabot">PRABOT</h1>
+    <nav>
+      <a href="#" id="about">About Us</a>
+      <a href="#" id="explore">Explore</a>
+      <a href="#" id="products">Products</a>
+    </nav>
+  </header>
+
+<div class="form-container">
+    <h2>User Registration</h2>
+    <form id="userForm">
+        <input type="text" id="fullName" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="text" id="location" placeholder="Location">
+        
+        <label>Preferred Products:</label>
+        <div class="checkbox-group">
+            <input type="checkbox" id="vegetables" value="Vegetables"> <label for="vegetables">Vegetables</label>
+            <input type="checkbox" id="fruits" value="Fruits"> <label for="fruits">Fruits</label>
+            <input type="checkbox" id="dairy" value="Dairy"> <label for="dairy">Dairy</label>
+            <input type="checkbox" id="spices" value="Spices"> <label for="spices">Spices</label>
+        </div>
+        
+        <select id="deliveryPreference">
+            <option value="">Select Delivery Preference</option>
+            <option value="Immediate">Immediate</option>
+            <option value="Pre-order">Pre-order</option>
+        </select>
+        
+        <!-- Optional Profile Photo Upload -->
+        <label>Upload Profile Photo (Optional):</label>
+        <input type="file" id="profilePhoto" accept="image/*">
+        
+        <button type="submit" onclick="window.location.href='userdashboard.html'">Register as User</button>
+    </form>
+</div>
+
+<script src="userregistration.js"></script>
+</body>
+</html>

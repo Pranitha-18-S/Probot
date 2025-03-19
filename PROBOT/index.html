@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabot - Fresh Farm Products</title>
+    <link rel="stylesheet" href="homestyle.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Prabot</div>
+        <input type="text" placeholder="Search for vegetables, fruits..." class="search-box">
+        <nav>
+            <a href="#index">Home</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact Us</a>
+            <a href="navigation/login.html">Login</a>
+        </nav>
+        <div id="cart">
+            <a href="cart/cart.html" id="carti">🛒</a>
+            <a href="#" id="cartt">Cart</a>
+        </div>
+    </header>
+    <section class="hero">
+        <h1>Fresh Vegetables & Fruits Delivered to You</h1>
+    </section>
+    <section class="product-section">
+        <h2>Fresh Picks for You</h2>
+        <button class="product-nav" id="prevBtn">❮</button>
+        <div class="product-container">
+            <div class="product-card"><img src="./tomato.jpg" alt="Tomato"><p>Tomato - ₹30/kg</p></div>
+            <div class="product-card"><img src="navigation/onion.jpg" alt="Onion"><p>Onion - ₹40/kg</p></div>
+            <div class="product-card"><img src="navigation/apple.jpg" alt="Apple"><p>Apple - ₹150/kg</p></div>
+            <div class="product-card"><img src="navigation/ginger.jpg" alt="Ginger"><p>Ginger - ₹150/kg</p></div>
+            <div class="product-card"><img src="./tomato.jpg" alt="Tomato"><p>Tomato - ₹30/kg</p></div>
+            <div class="product-card"><img src="navigation/onion.jpg" alt="Onion"><p>Onion - ₹40/kg</p></div>
+            <div class="product-card"><img src="navigation/apple.jpg" alt="Apple"><p>Apple - ₹150/kg</p></div>
+            <div class="product-card"><img src="navigation/ginger.jpg" alt="Ginger"><p>Ginger - ₹150/kg</p></div>
+        </div>
+        <button class="product-nav" id="nextBtn">❯</button>
+    </section>
+    <div id="btn">
+    <button onclick="window.location.href='navigation/navigationveg.html'"id="btns">Vegetables</button>
+    <button onclick="window.location.href='navigation/navfruit.html'" id="btns">Fruits</button>
+    <button onclick="window.location.href='navigation/navdairy.html'"id="btns">Dairy</button>
+    <button onclick="window.location.href='navigation/navspice.html'" id="btns">Spices</button>
+    </div>
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Prabot connects consumers with fresh, locally sourced farm products.</p>
+    </section>
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <p>Reach us at <a href="mail to:prabot@gmail.com">prabot@gmail.com</a>.</p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Prabot. All rights reserved.</p>
+    </footer>
+    <script src="homescript.js"></script>
+</body>
+</html>

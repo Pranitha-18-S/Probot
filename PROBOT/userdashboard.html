@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Prabot</title>
+    <link rel="stylesheet" href="style4.css">
+    <script>
+        function showRetail() {
+            document.getElementById("retail-section").style.display = "block";
+            document.getElementById("wholesale-section").style.display = "none";
+        }
+
+        function showWholesale() {
+            document.getElementById("retail-section").style.display = "none";
+            document.getElementById("wholesale-section").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+<header class="navbar">
+    <h1>Prabot</h1>
+    <nav>
+        <ul class="center-nav">
+            <li><a href="#">Home</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+        <ul class="right-nav">
+            <li><a href="#">Orders</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Search & Filter Section -->
+<div class="search-container">
+    <input type="text" placeholder="Search for vegetables, fruits, spices...">
+    <button>Search</button>
+</div>
+
+<!-- Buttons for Retail and Wholesaleonclick="showRetail()"onclick="showWholesale()" -->
+<div class="toggle-buttons">
+    <button  onclick="window.location.href='retailpageuser.html'">Retail Deals</button>
+    <button  onclick="window.location.href='wholesalepageuser.html'">Wholesale Deals</button>
+</div>
+<section id="retail-section" class="products">
+    
+    <h2>Retail Deals - Recommended Products</h2>
+    <div class="product-list">
+        <div class="product-card">
+            <img src="tomato.jpg" alt="Tomato">
+            <h3>Fresh Tomatoes</h3>
+            <p>₹40 per kg</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="navigation/milk.jpg" alt="Milk">
+            <h3>Organic Milk</h3>
+            <p>₹50 per liter</p>
+            <button>Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+            <img src="navigation/chilli.jpg" alt="Red Chili">
+            <h3>Spicy Red Chili</h3>
+            <p>₹100 per kg</p>
+            <button>Add to Cart</button>
+        </div>
+    </div>
+</section>
+<section id="wholesale-section" class="wholesale" style="display: none;">
+    <h2>Wholesale Deals - Farmers Selling in Bulk</h2>
+    <div class="farmer-list">
+        <div class="farmer-card">
+            <h3>Ramesh Kumar</h3>
+            <p>Crop: Wheat</p>
+            <p>Quantity: 500 kg</p>
+            <p>Location: Guntur</p>
+            <button>Contact Farmer</button>
+        </div>
+        
+
+        <div class="farmer-card">
+            <h3>Sita Rao</h3>
+            <p>Crop: Onions</p>
+            <p>Quantity: 300 kg</p>
+            <p>Location: Vijayawada</p>
+            <button>Contact Farmer</button>
+        </div>
+
+        <div class="farmer-card">
+            <h3>Arun Dev</h3>
+            <p>Crop: Potatoes</p>
+            <p>Quantity: 800 kg</p>
+            <p>Location: Hyderabad</p>
+            <button>Contact Farmer</button>
+        </div>
+    </div>
+</section>
+
+<p style="padding:20px;
+text-align:center;"><b>Conatct us:prabot@gmail.com</b></p>
+<footer >
+    <p>&copy;2025 prabot </p>
+</footer>
+
+</body>
+</html>
